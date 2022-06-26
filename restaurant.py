@@ -17,8 +17,26 @@ class Table:
 
         print(self.bill)
 
-    #def remove(self, item: str, price: float, quantity=0):
+    # Remove method - Takes a menu item and removes it from the bill
+    def remove(self, item: str, price: float, quantity=0):
+        for order_item in self.bill:
+            if order_item['item'] == item and order_item['price'] == price:
+                if order_item['quantity'] - quantity > 0:
+                    order_item['quantity'] -= quantity
+                else:
+                    self.bill.remove(order_item)
 
+                    print(self.bill)
+                    return True
+        return False
+
+    #Returns a value representing the total price * quantity of each menu item in the bill
+    def get_subtotal(self):
+        sub_total = 0
+        for order_item in self.bill:
+            sub_total += order_item['price'] * order_item['quantity']
+
+        return sub_total
 
 
 
