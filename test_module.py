@@ -62,7 +62,7 @@ class UnitTests(unittest.TestCase):
         self.table02.order('Food1', 10.00, 3)
         self.table02.order('Food2', 20.00, 1)
         self.table02.order('Food3', 0.50, 1)
-        actual = self.table02.get_subtotal()
+        actual = self.table02.get_subtotal
         expected = 50.50
         self.assertAlmostEqual(
             actual, expected, 2,
