@@ -41,3 +41,4 @@ class Table:
     #  splitting the total by the total number of dinners
     def split_bill(self):
         return round(self.get_subtotal() / self.number_of_diners, 2)
+
