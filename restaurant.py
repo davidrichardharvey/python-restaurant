@@ -8,7 +8,6 @@ class Table:
         for items in self.bill:
             if items["item"] == item and items["price"] == price:
                 items["quantity"] += quantity
-                break
         else:
             self.bill.append({"item": item, "price": price, "quantity": quantity})
 
