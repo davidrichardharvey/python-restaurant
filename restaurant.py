@@ -1,36 +1,36 @@
 class Table:
 
-    def __init__(self, diners):
-        self.diners = diners
+    def __init__(self, number_of_diners):
+        self.number_of_diners = number_of_diners
         self.bill = []
         self.subtotal = 0
         self.total = 0
 
     def order(self, item, price, quantity=1):
-        for bills in self.bill:
-            if bills["item"] == item and bills["price"] == price:
-                bills["quantity"] += quantity
+        for items in self.bill:
+            if items["item"] == item and items["price"] == price:
+                items["quantity"] += quantity
                 break
         else:
             self.bill.append({"item": item, "price": price, "quantity": quantity})
 
     def remove(self, item, price, quantity=1):
-        for bills in self.bill:
-            if bills["item"] == item and bills["price"] == price:
-                if bills["quantity"] - quantity == 0:
-                    self.bill.remove(bills)
-                elif bills["quantity"] - quantity < 0:
+        for items in self.bill:
+            if items["item"] == item and items["price"] == price:
+                if items["quantity"] - quantity == 0:
+                    self.bill.remove(items)
+                elif items["quantity"] - quantity < 0:
                     return False
                 else:
-                    bills["quantity"] -= quantity
+                    items["quantity"] -= quantity
                 return True
         else:
             return False
 
     def get_subtotal(self):
         subtotal = 0
-        for bills in self.bill:
-            subtotal += bills["price"] * bills["quantity"]
+        for items in self.bill:
+            subtotal += items["price"] * items["quantity"]
         self.subtotal = float("{:.2f}".format(subtotal))
         return subtotal
 
@@ -43,5 +43,5 @@ class Table:
 
     def split_bill(self):
         self.get_total()
-        splitted_bill = self.subtotal / self.diners
-        return splitted_bill
+        bill_after_split = self.subtotal / self.number_of_diners
+        return bill_after_split
